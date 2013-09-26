@@ -41,3 +41,35 @@ gem 'jbuilder', '~> 1.2'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'cancan'
+gem 'haml-rails'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'pg'
+gem 'rolify'
+gem 'simple_form', '>= 3.0.0.rc'
+
+group :development do
+  gem 'html2haml'
+  gem 'quiet_assets'
+  gem 'rails_layout'
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'thin'
+end
+
+group :production do
+  gem 'unicorn'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner', '1.0.1'
+  gem 'email_spec'
+end
+
