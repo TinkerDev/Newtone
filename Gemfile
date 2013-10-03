@@ -15,10 +15,34 @@ gem 'omniauth-twitter'
 gem 'pg'
 gem 'rolify'
 gem 'simple_form', '>= 3.0.0.rc'
+gem 'carrierwave'
+gem 'noisia', :git=>'https://github.com/unloved/noisia'
+
+
 group :development do
   gem 'html2haml'
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'pry-rails'
+  gem 'pry-theme'
+
+  gem 'pry-pretty-numeric'
+  gem 'pry-syntax-hacks'
+  gem 'pry-highlight'
+  gem 'pry-git'
+  gem 'pry-developer_tools'
+
+  gem 'pry-remote'
+
+# step, next, finish, continue, break
+  gem 'pry-nav'
+  gem 'pry-doc'
+  gem 'pry-docmore'
+
+# Добавляет show-stack
+  gem "pry-stack_explorer"
+
+  gem "jquery-fileupload-rails"
 end
 group :development, :test do
   gem 'factory_girl_rails'
