@@ -4,3 +4,5 @@
 #= require turbolinks
 #= require jquery-fileupload
 #= require file_upload
+#= require recorder
+#= require recording

@@ -18,6 +18,7 @@ class Track < ActiveRecord::Base
   end
 
   def self.reseed
+    Noisia::Elastic.recreate_index
     self.destroy_all
     self.seed
   end

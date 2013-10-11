@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/unloved/noisia
-  revision: 522b1f5aa847430af5283991d78b12ab96b3d9e4
+  revision: 53a01fb9685491a8cd606ac8ad3b05b5bf39f2da
   specs:
     noisia (0.0.1)
       activerecord
