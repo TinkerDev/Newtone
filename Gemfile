@@ -1,13 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.0'
-gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'cancan'
 gem 'haml-rails'
 gem 'omniauth'
@@ -18,10 +14,17 @@ gem 'simple_form', '>= 3.0.0.rc'
 gem 'carrierwave'
 gem 'noisia', :git=>'https://github.com/unloved/noisia'
 
+#group :assets, :development do
+ gem 'bootstrap-sass', '~> 2.3.2.2'
+ gem 'coffee-rails', '~> 4.0.0'
+ gem "jquery-fileupload-rails"
+ gem 'quiet_assets'
+ gem 'sass-rails', '~> 4.0.0'
+ gem 'uglifier', '>= 1.3.0'
+#end
 
 group :development do
   gem 'html2haml'
-  gem 'quiet_assets'
   gem 'rails_layout'
   gem 'pry-rails'
   gem 'pry-theme'
@@ -42,7 +45,6 @@ group :development do
 # Добавляет show-stack
   gem "pry-stack_explorer"
 
-  gem "jquery-fileupload-rails"
 end
 group :development, :test do
   gem 'factory_girl_rails'
@@ -56,4 +58,11 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
+end
+
+group :deploy do
+    gem 'capistrano', '~> 3.0', :require => false
+    gem 'capistrano-rbenv', github: 'capistrano/rbenv', :require => false
+    gem 'capistrano-rails', github: 'capistrano/rails', :require => false
+    gem 'capistrano-bundler', github: 'capistrano/bundler', :require => false
 end
