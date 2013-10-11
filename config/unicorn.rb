@@ -6,7 +6,7 @@ if rails_env=='production'
   APP_PATH = ENV['APP_PATH'] || '/home/wwwnewtone/newtone.name/'
   working_directory APP_PATH + "current"
 
-  listen "127.0.0.1:9000"
+  listen APP_PATH + "shared/pids/unicorn.sock"
   pid APP_PATH + "shared/pids/unicorn.pid"
   stderr_path APP_PATH + "shared/log/unicorn.stderr.log"
   stdout_path APP_PATH + "shared/log/unicorn.stdout.log"
