@@ -1,0 +1,64 @@
+.select-audio-source-button-link
+  display: block
+  margin: 0 auto
+  text-align: center
+  width: 84px
+  height: 84px
+  padding: 20px 10px 0 10px
+  +border-radius(42px)
+  background: darken($body-bg, 10%)
+  &:hover
+    background: darken($body-bg, 5%)
+    +transition(background 0.2s ease, color 0.2s ease)
+
+.select-audio-source-button-caption
+  @extend small
+  padding-top: 10px
+  color: $gray
+  text-align: center
+
+.select-audio-button-icon
+  &, &:before
+    font-size: 32px
+    opacity: 1
+    padding-top: 2px
+
+
+.newtone-speach
+  font-size: 3*$font-size-base
+  font-weight: 800
+  text-align: center
+
+.recognition-container
+  min-height: 500px
+  margin-top: 80px
+
+.select-audio-source
+  display: block
+  width: 100%
+  margin: 0
+  border: 0
+
+  & > li
+    width: 50%
+    padding:
+      top: 20px
+      bottom: 20px
+      left: 0
+      right: 0
+
+.audio-source-block
+  margin:
+    top: 1em
+    bottom: 1em
+  .btn.btn-large
+    padding:
+      top: 12px
+      bottom: 10px
+    display: block
+    //&.hide
+      display: none
+    margin: 0 auto
+    width: 280px
+    font-size: $font-size-large
+    margin-bottom: 10px

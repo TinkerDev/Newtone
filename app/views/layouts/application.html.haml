@@ -2,24 +2,20 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : "Newtone"
-      %meta{:content => content_for?(:description) ? yield(:description) : "Newtone", :name => "description"}
-        = stylesheet_link_tag "application", :media => "all"
-        = javascript_include_tag "application"
-        = csrf_meta_tags
-        = yield(:head)
+    %title= content_for?(:title) ? yield(:title) : "Newtone"
+    %meta{:content => content_for?(:description) ? yield(:description) : "Newtone", :name => "description"}
+    %link{:rel=>'image_src', :href=>image_path('newtone-caption.png')}
+    = favicon_link_tag image_path('favicon.ico')
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
-    .navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
-    #main{:role => "main"}
-      .container
-        .content
-          .row
-            .span12
-              = render 'layouts/messages'
-              = yield
-          %footer
-      / ! end of .container
-    / ! end of #main
+    = render 'layouts/navigation'
+    .container
+      .row
+        .col-md-12
+          = render 'layouts/messages'
+          = yield
+      -#.footer
+      -#  = render 'layouts/footer'

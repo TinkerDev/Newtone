@@ -1,46 +1,43 @@
-log = (message) ->
-  val = $("#debug").val()
-  $("#debug").val [val, message].join("\n")
-  $("#debug")[0].scrollTop = 99999999
-
-$ ->
-  log "Calling Recorder.initialize()"
+$(document).ready ->
+  console.log "Calling Recorder.initialize()"
   Recorder.initialize
-    swfSrc: "../recorder.swf?" + Math.random()
-    initialized: ->
-      log "Initialized!"
+    swfSrc: "../recorder.swf?" + Math.random(),
+    flashContainer: document.getElementById("audio-source-block-record")
 
-  $("#record").on "click", ->
-    log "Calling Recorder.record()"
+    initialized: ->
+      console.log "Initialized!"
+
+  $(".audio-source-block-record > #record").on "click", ->
+    console.log "Calling Recorder.record()"
     Recorder.record
       start: ->
-        log "Recording..."
-
+        console.log "Recording..."
+        $(".audio-source-block-record > #record").addClass('hidden')
+        $(".audio-source-block-record > #stop").removeClass('hidden')
       progress: (ms) ->
-        log "Record progressed: " + ms + "ms"
+        console.log "Record progressed: " + ms + "ms"
 
 
-  $("#stop").on "click", ->
-    log "Calling Recorder.stop()"
+
+  $(".audio-source-block-record > #stop").on "click", ->
+    console.log "Calling Recorder.stop()"
     Recorder.stop()
+    $(".audio-source-block-record > #record").removeClass('hidden')
+    $(".audio-source-block-record > #stop").addClass('hidden')
+    $(".audio-source-block-record > #submit").removeClass('disabled')
 
-  $("#play").on "click", ->
-    log "Calling Recorder.play()"
+  $(".audio-source-block-record > #play").on "click", ->
+    console.log "Calling Recorder.play()"
     Recorder.play progress: (ms) ->
-      log "Play progressed: " + ms + "ms"
+      console.log "Play progressed: " + ms + "ms"
 
 
-  $("#upload").on "click", ->
-    log "Calling Recorder.upload()"
-    Recorder.upload
+  $(".audio-source-block-record > #submit").on "click", ->
+    console.log "Calling Recorder.submit()"
+    Recorder.submit
       method: "POST"
       url: "/recognition/recognize"
       audioParam: "track"
       success: (responseText) ->
-        log "Uploaded\n"
+        console.log "submited\n"
         console.log(responseText)
-
-
-  $("#getDebugLog").on "click", ->
-    log " === Flash Debug Log === \n" + Recorder.flashInterface().debugLog().join("\n") + " === End Debug Log === \n"
-

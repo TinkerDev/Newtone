@@ -1,0 +1,27 @@
+ru:
+  audio_sources:
+    make_a_choice: выберите один из аудио источников выше
+    recognize_file: Загрузить файл
+    recognize_record: Записать аудио
+    upload:
+      select: Выбрать файл
+      submit: Распознать
+    record:
+      record: Записать аудио
+      stop: Остановить запись
+      submit: Распознать
+      play: Прослушать
+  newtone_speach:
+    welcome: "&mdash; я узнаю музыку"
+    processing: "&mdash; хмм....."
+    results:
+      good: "&mdash; я знаю!"
+      bad: "&mdash; я не знаю"
+      bad_text: "Не нахожу похожих песен.<br>Попробуйте улучшить качество и увеличить длинну записанного фрагмента."
+    error: "&mdash; ой, что то пошло не так!"
+
+  cancel_processing: отменить
+  recognize_new_track: распознать еще
+  go_back: назад
+  error: Ваше яблоко полетело вверх!<br> К такому наc жизнь не готовила, попробуйте обновить страницу, может гравитация сработает в следующий раз.
+  flash_enable: В вашем браузере должен быть установлен Adobe Flash Player

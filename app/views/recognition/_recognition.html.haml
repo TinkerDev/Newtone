@@ -1,0 +1,15 @@
+.row
+  .col-md-6
+    .j.newtone-face.newtone-normal
+    - [:bad, :good].each do |state|
+      .j.newtone-face.hidden{:class => "newtone-#{state}"}
+  .col-md-6
+    .recognition-container
+      %h1.newtone-speach.pull-left
+        = t('newtone_speach.welcome').html_safe
+      %ul.nav.nav-tabs.select-audio-source
+        = select_audio_source_button :record, url_for(:recognize_record)
+        = select_audio_source_button :file, url_for(:recognize_file)
+      .audio-source-block
+        = yield :recognition_type_body
+.clearfix

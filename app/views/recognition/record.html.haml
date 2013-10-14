@@ -1,12 +1,11 @@
-#content
-  %button#record
-    Record
-  %button#stop
-    Stop
-  %button#play
-    Play
-  %button#upload
-    Upload
-
-  %button#getDebugLog
-    Get Debug Log
+- content_for :recognition_type_body do
+  .audio-source-block-record#audio-source-block-record
+    %button#record.j.btn.btn-large.btn-success
+      = t('audio_sources.record.record')
+    %button#play.j.btn.btn-large.btn-primary.hidden
+      = t('audio_sources.record.play')
+    %button#stop.j.btn.btn-large.btn-danger.hidden
+      = t('audio_sources.record.stop')
+    %button#submit.j.btn.btn-large.btn-primary.disabled
+      = t('audio_sources.record.submit')
+= render 'recognition'

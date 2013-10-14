@@ -13,14 +13,17 @@ gem 'rolify'
 gem 'simple_form', '>= 3.0.0.rc'
 gem 'carrierwave'
 gem 'noisia', :git=>'https://github.com/unloved/noisia'
+gem 'active_link_to'
 
 #group :assets, :development do
- gem 'bootstrap-sass', '~> 2.3.2.2'
+ gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git' # '~> 2.3.2.0'
  gem 'coffee-rails', '~> 4.0.0'
  gem "jquery-fileupload-rails"
  gem 'quiet_assets'
  gem 'sass-rails', '~> 4.0.0'
  gem 'uglifier', '>= 1.3.0'
+ gem 'compass-rails', '~> 2.0.alpha.0'
+ gem 'animate-sass'
 #end
 
 group :development do
