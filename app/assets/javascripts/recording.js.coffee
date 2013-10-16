@@ -2,7 +2,12 @@ $(document).ready ->
   console.log "Calling Recorder.initialize()"
   Recorder.initialize
     swfSrc: "../recorder.swf?" + Math.random(),
-    flashContainer: document.getElementById("audio-source-block-record")
+    flashContainer: $("#flash-container")[0],
+    onFlashSecurity: ->
+      $('#flash-container').show()
+      flashContainer = $(Recorder.options.flashContainer)
+      offset = $('.audio-source-block-record > #record').offset()
+      flashContainer.offset({ top: offset.top-20, left: offset.left-2})
 
     initialized: ->
       console.log "Initialized!"
@@ -16,7 +21,6 @@ $(document).ready ->
         $(".audio-source-block-record > #stop").removeClass('hidden')
       progress: (ms) ->
         console.log "Record progressed: " + ms + "ms"
-
 
 
   $(".audio-source-block-record > #stop").on "click", ->
@@ -34,10 +38,14 @@ $(document).ready ->
 
   $(".audio-source-block-record > #submit").on "click", ->
     console.log "Calling Recorder.submit()"
-    Recorder.submit
+    showProcessingBlock()
+    Recorder.upload
       method: "POST"
       url: "/recognition/recognize"
       audioParam: "track"
-      success: (responseText) ->
+      success: (data) ->
+        showResultsBlock(data)
         console.log "submited\n"
-        console.log(responseText)
+        console.log(data)
+      error: ->
+        showErrorBlock()

@@ -1,21 +1,18 @@
 module ButtonsHelper
-  def select_audio_source_button type, url
-    css_class = "select-audio-button-icon select-audio-button-#{type}"
-    button = ''
+  def select_audio_source_button type, url=nil
     case type
       when :record
-        button = content_tag(:div, "#{fontello('mic', css_class)}".html_safe, :class => 'select-audio-source-button-link')
-        tooltip = content_tag(:div, I18n.t('audio_sources.recognize_record'), :class => 'select-audio-source-button-caption')
+        icon = 'mic'
+        tooltip_text = I18n.t('audio_sources.recognize_record')
       when :file
-        button = content_tag(:div, "#{fontello('upload', css_class)}".html_safe, :class => 'select-audio-source-button-link')
-        tooltip = content_tag(:div, I18n.t('audio_sources.recognize_file'), :class => 'select-audio-source-button-caption')
-      #when :new
-      #  button = content_tag(:div, "#{fontello('cw', css_class)}".html_safe, :class => 'round-link')
-      #  tooltip = content_tag(:div, I18n.t('recognize_new_track'), :class => 'select-audio-source-button-caption center-block')
-      #  return link_to_function("#{button} #{tooltip}".html_safe, "screenState('welcome'); newtoneFace('normal');")
+        icon = 'upload'
+        tooltip_text = I18n.t('audio_sources.recognize_file')
+      when :new
+        icon = 'cw'
+        tooltip_text = I18n.t('recognize_new_track')
     end
-    content_tag :li, :class => "select-audio-source-button" do
-      active_link_to( "#{button} #{tooltip}".html_safe, url)
-    end
+    button = content_tag(:div, "#{fontello(icon, 'select-audio-button-icon')}".html_safe, :class => 'select-audio-source-button-link')
+    tooltip = content_tag(:div, tooltip_text, :class => 'select-audio-source-button-caption')
+    active_link_to( "#{button} #{tooltip}".html_safe, url)
   end
 end

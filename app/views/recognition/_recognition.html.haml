@@ -5,11 +5,66 @@
       .j.newtone-face.hidden{:class => "newtone-#{state}"}
   .col-md-6
     .recognition-container
-      %h1.newtone-speach.pull-left
-        = t('newtone_speach.welcome').html_safe
-      %ul.nav.nav-tabs.select-audio-source
-        = select_audio_source_button :record, url_for(:recognize_record)
-        = select_audio_source_button :file, url_for(:recognize_file)
       .audio-source-block
+        %h1.newtone-speach.pull-left
+          = t('newtone_speach.welcome').html_safe
+        .clearfix
+        .row.select-audio-source
+          .col-md-1
+          .col-md-5
+            = select_audio_source_button :record, url_for(:recognize_record)
+          .col-md-5
+            = select_audio_source_button :file, url_for(:recognize_file)
+          .col-md-1
         = yield :recognition_type_body
-.clearfix
+      .clearfix
+
+      .processing-block.spinner-block
+        %h1.newtone-speach.pull-left
+          = t('newtone_speach.processing').html_safe
+        .pull-right
+          %a#cancel_processing{"data-original-title" => I18n.t('cancel_processing'), href: "javascript:void(0)", rel: "tooltip"}
+            %i.fontello-icon-cancel-circled.icon-size-24
+        .clearfix
+        .center-block
+          .ui-spinner
+            %span.side.side-left
+              %span.fill
+            %span.side.side-right
+              %span.fill
+        .clearfix
+
+      .results-block
+        .bad
+          %h1.newtone-speach.pull-left
+            = t('newtone_speach.results.bad').html_safe
+          .clearfix
+          .row
+            .col-md-9
+              .text
+              = t('newtone_speach.results.bad_text').html_safe
+            .col-md-3
+              = select_audio_source_button :new
+        .good
+          %h1.newtone-speach.pull-left
+            = t('newtone_speach.results.good').html_safe
+          .clearfix
+          .row
+            .col-md-9
+              .text
+                %h1.no-margin-bottom.artist=  "Artist"
+                %h2.font-weight-normal.no-margin-top.title= "Title"
+            .col-md-3
+              = select_audio_source_button :new
+        .clearfix
+
+      .error-block
+        %h1.newtone-speach.pull-left
+          = t('newtone_speach.error').html_safe
+        .row
+          %p.font-weight-normal.text
+            = t('error').html_safe
+        %hr.small
+        %h3.font-weight-normal
+          = link_to "#{fontello('left-circled', 24)} #{t('go_back')}".html_safe, "javascript:history.go(0)"
+        .clearfix

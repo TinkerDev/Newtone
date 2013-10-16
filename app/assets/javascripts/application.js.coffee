@@ -6,3 +6,4 @@
 #= require file_upload
 #= require recorder
 #= require recording
+#= require recognition

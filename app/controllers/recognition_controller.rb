@@ -1,4 +1,9 @@
 class RecognitionController < ApplicationController
+
+  def index
+
+  end
+
   def file
 
   end

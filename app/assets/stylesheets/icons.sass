@@ -1,8 +1,12 @@
 [class*="fontello-icon-"], [class*=" fontello-icon-"]
   &, &:before
-    //line-height: inherit
     background: none
     vertical-align: top
     width: auto !important
     height: auto
     opacity: 1
+
+@each $size in 10, 12, 14, 16, 18, 20, 24, 32, 48, 64, 128, 256, 512
+  .icon-size-#{$size}
+    &, &:before
+      font-size: #{$size}px

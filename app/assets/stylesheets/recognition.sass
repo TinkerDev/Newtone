@@ -23,7 +23,6 @@
     opacity: 1
     padding-top: 2px
 
-
 .newtone-speach
   font-size: 3*$font-size-base
   font-weight: 800
@@ -32,20 +31,13 @@
 .recognition-container
   min-height: 500px
   margin-top: 80px
+  .text
+    margin-top: 20px
 
 .select-audio-source
-  display: block
-  width: 100%
-  margin: 0
-  border: 0
-
-  & > li
-    width: 50%
-    padding:
-      top: 20px
-      bottom: 20px
-      left: 0
-      right: 0
+  margin:
+    top: 10px
+    bottom: 20px
 
 .audio-source-block
   margin:
@@ -56,9 +48,19 @@
       top: 12px
       bottom: 10px
     display: block
-    //&.hide
-      display: none
     margin: 0 auto
     width: 280px
     font-size: $font-size-large
     margin-bottom: 10px
+  #flash-container
+    position: absolute
+    z-index: 99
+    left: -9999px
+    top: -9999px
+    width: 284px
+    height: 150px
+
++ui-spinner($white, 60px)
+
+.ui-spinner
+  margin: 60px auto
