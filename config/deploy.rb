@@ -27,7 +27,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:web), in: :sequence, wait: 5 do
-      execute "/etc/init.d/unicorn-newtone.name restart || true"
+      execute "/etc/init.d/unicorn-newtone.name upgrade"
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
     end
