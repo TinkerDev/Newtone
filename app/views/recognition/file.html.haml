@@ -1,3 +1,16 @@
 - content_for :recognition_type_body do
+  .audio-source-block-file
+    %button#select.btn.btn-large.btn-success
+      = t('audio_sources.upload.select')
+    %button#submit.btn.btn-large.btn-primary.disabled
+      = t('audio_sources.upload.submit')
+    = file_field :audio, :sample, :class => 'audio-upload-input', :data => {:url => recognize_path}
+    -#.browse-button
+    -#        = button_tag t('audio_sources.upload.select'), :class => 'btn btn-large btn-primary select-button'
+    -#        = file_field :audio, :sample, :class => 'audio-upload-input', :data => {:url => recognize_path}
+    -#      .clearfix
+    -#      %br
+    -#      = link_to t('audio_sources.upload.submit'), "javascript:void(0);", :class => 'btn btn-large btn-primary upload-button disabled'
+
 
 = render 'recognition'

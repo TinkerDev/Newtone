@@ -2,12 +2,12 @@ $(document).ready ->
   console.log "Calling Recorder.initialize()"
   Recorder.initialize
     swfSrc: "../recorder.swf?" + Math.random(),
-    flashContainer: $("#flash-container")[0],
+#    flashContainer: $("#flash-container")[0],
     onFlashSecurity: ->
-      $('#flash-container').show()
+#      $('#flash-container').show()
       flashContainer = $(Recorder.options.flashContainer)
       offset = $('.audio-source-block-record > #record').offset()
-      flashContainer.offset({ top: offset.top-20, left: offset.left-2})
+      flashContainer.offset({ top: offset.top-10, left: offset.left-2})
 
     initialized: ->
       console.log "Initialized!"
@@ -42,10 +42,11 @@ $(document).ready ->
     Recorder.upload
       method: "POST"
       url: "/recognition/recognize"
-      audioParam: "track"
+      audioParam: "audio[sample]"
       success: (data) ->
         showResultsBlock(data)
         console.log "submited\n"
         console.log(data)
       error: ->
+        console.log('error')
         showErrorBlock()

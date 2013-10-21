@@ -44,7 +44,7 @@
               .text
               = t('newtone_speach.results.bad_text').html_safe
             .col-md-3
-              = select_audio_source_button :new
+              = select_audio_source_button :new, '#'
         .good
           %h1.newtone-speach.pull-left
             = t('newtone_speach.results.good').html_safe
@@ -52,10 +52,14 @@
           .row
             .col-md-9
               .text
-                %h1.no-margin-bottom.artist=  "Artist"
-                %h2.font-weight-normal.no-margin-top.title= "Title"
+                .result
+                  %span.artist
+                    Artist
+                  %span.song
+                    Song
+
             .col-md-3
-              = select_audio_source_button :new
+              = select_audio_source_button :new, '#'
         .clearfix
 
       .error-block

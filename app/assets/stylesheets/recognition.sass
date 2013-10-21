@@ -52,15 +52,31 @@
     width: 280px
     font-size: $font-size-large
     margin-bottom: 10px
-  #flash-container
-    position: absolute
-    z-index: 99
-    left: -9999px
-    top: -9999px
-    width: 284px
-    height: 150px
+
+.audio-source-block-file
+  input
+    display: none
+  //  &[type="button"]
+  //    cursor: pointer
+  //  &[type="file"]
+  //    width: 100%
+  //    height: 45px
+  //    position: absolute
+  //    right: 0px
+  //    top: 0px
+  //    cursor: pointer
+    //  opacity: 0
+    //  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+
 
 +ui-spinner($white, 60px)
 
 .ui-spinner
   margin: 60px auto
+
+.processing-block
+  display: none
+.results-block
+  display: none
+.error-block
+  display: none
