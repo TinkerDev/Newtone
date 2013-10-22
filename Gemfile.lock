@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/andi/simple-navigation.git
+  revision: 9e1657e18789e05c573b99be1c64dc1a476e4d12
+  specs:
+    simple-navigation (3.11.0)
+      activesupport (>= 2.3.2)
+
+GIT
   remote: git://github.com/beedub/jquery-fileupload-rails.git
   revision: 9524ff75e42551ea84cf4aec6210640dddfc000d
   specs:
@@ -262,7 +269,11 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    settingslogic (2.0.9)
     sexp_processor (4.3.0)
+    simple-navigation-bootstrap (1.0.0)
+      railties (>= 3.1)
+      simple-navigation (>= 3.7.0)
     simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -360,6 +371,9 @@ DEPENDENCIES
   rolify
   rspec-rails
   sass-rails (~> 4.0.0)
+  settingslogic
+  simple-navigation!
+  simple-navigation-bootstrap
   simple_form (>= 3.0.0.rc)
   thin
   uglifier (>= 1.3.0)

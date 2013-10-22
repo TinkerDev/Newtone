@@ -14,6 +14,9 @@ gem 'simple_form', '>= 3.0.0.rc'
 gem 'carrierwave'
 gem 'noisia', :git=>'https://github.com/unloved/noisia'
 gem 'active_link_to'
+gem 'simple-navigation', :git => 'git://github.com/andi/simple-navigation.git'
+gem 'simple-navigation-bootstrap'
+gem 'settingslogic'
 
 #group :assets, :development do
  gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git' # '~> 2.3.2.0'
@@ -25,6 +28,7 @@ gem 'active_link_to'
  gem 'compass-rails', '~> 2.0.alpha.0'
  gem 'animate-sass'
 #end
+
 
 group :development do
   gem 'html2haml'
