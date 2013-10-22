@@ -17,6 +17,8 @@ gem 'active_link_to'
 gem 'simple-navigation', :git => 'git://github.com/andi/simple-navigation.git'
 gem 'simple-navigation-bootstrap'
 gem 'settingslogic'
+gem 'vk_api', :git=>'git://github.com/twinslash/vk-ruby.git'
+gem 'mechanize'
 
 #group :assets, :development do
  gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git' # '~> 2.3.2.0'

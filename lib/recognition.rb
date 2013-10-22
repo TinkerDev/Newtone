@@ -1,8 +1,5 @@
 #encoding: utf-8
 class Recognition < Noisia::Recognition
-  def self.test
-    self.new("/Users/unloved/Downloads/t_reka.wav").rates
-  end
 
   def results
     if search_results.any?
