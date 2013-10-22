@@ -6,6 +6,8 @@ Newtone::Application.routes.draw do
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
 
+  get '/about' => 'home#about'
+
   scope :recognition do
     get '/file' => 'recognition#file', :as => :recognize_file
     get '/record' => 'recognition#record', :as => :recognize_record
