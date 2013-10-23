@@ -19,6 +19,8 @@ gem 'simple-navigation-bootstrap'
 gem 'settingslogic'
 gem 'vk_api', :git=>'git://github.com/twinslash/vk-ruby.git'
 gem 'mechanize'
+gem 'rails-backbone'
+
 
 #group :assets, :development do
  gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git' # '~> 2.3.2.0'
