@@ -61,20 +61,27 @@ class VkLibrary
                 52054978, 68990387, 74585087, 78922957, 85774109, 99822243, 112327825, 129880873,
                 136144980, 142935144, 145001146, 146073227, 150876501, 166660228, 175764013, 177084875,
                 194422773, 222741862]
-
-    begin
-      user_ids.each do |uid|
-        tracks = session.audio.get(:uid => uid , :access_token => token).select{|t| t['duration'] <=480}
-        tracks = tracks.map{|t| {:name=>t['title'], :author=>t['artist'], :remote_file_url=>t['url']}}
-        tracks[0..3].each do |t|
-          Track.create(t) unless Track.where(:name => t[:name], :author => t[:author]).any?
-        end
+    @denied = 0
+    user_ids.each do |uid|
+      tracks = get_user_tracks(uid)
+      tracks = tracks.map{|t| {:name=>t['title'], :author=>t['artist'], :remote_file_url=>t['url']}}
+      tracks.each do |t|
+        Track.create(t) unless Track.where(:name => t[:name], :author => t[:author]).any?
       end
+    end
+    puts 'denied'
+    puts @denied
+  end
+
+  def get_user_tracks uid
+    begin
+      tracks = session.audio.get(:uid => uid , :access_token => token)
     rescue VkApi::ServerError => e
       raise e unless e.error['error_code'] == 201
-
+      @denied += 1
+      tracks = []
     end
-
+    tracks.select{|t| t['duration'] <=480}
   end
 
 end
