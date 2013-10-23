@@ -78,6 +78,7 @@ class VkLibrary
       tracks = session.audio.get(:uid => uid , :access_token => token)
     rescue VkApi::ServerError => e
       raise e unless e.error['error_code'] == 201
+      sleep(5)
       @denied += 1
       tracks = []
     end
