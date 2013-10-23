@@ -65,8 +65,8 @@ class VkLibrary
     user_ids.each do |uid|
       tracks = session.audio.get(:uid => uid , :access_token => token).select{|t| t['duration'] <=480}
       tracks = tracks.map{|t| {:name=>t['title'], :author=>t['artist'], :remote_file_url=>t['url']}}
-      tracks.each do |t|
-        Track.create(t)
+      tracks[0..3].each do |t|
+        Track.create(t) unless Track.where(:name => t[:name], :author => t[:author]).any?
       end
     end
   end
