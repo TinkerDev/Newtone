@@ -74,6 +74,7 @@ class VkLibrary
           nil
         end
       end
+      puts uid
     end
     puts 'denied'
     puts @denied
