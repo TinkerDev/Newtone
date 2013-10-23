@@ -62,13 +62,19 @@ class VkLibrary
                 136144980, 142935144, 145001146, 146073227, 150876501, 166660228, 175764013, 177084875,
                 194422773, 222741862]
 
-    user_ids.each do |uid|
-      tracks = session.audio.get(:uid => uid , :access_token => token).select{|t| t['duration'] <=480}
-      tracks = tracks.map{|t| {:name=>t['title'], :author=>t['artist'], :remote_file_url=>t['url']}}
-      tracks[0..3].each do |t|
-        Track.create(t) unless Track.where(:name => t[:name], :author => t[:author]).any?
+    begin
+      user_ids.each do |uid|
+        tracks = session.audio.get(:uid => uid , :access_token => token).select{|t| t['duration'] <=480}
+        tracks = tracks.map{|t| {:name=>t['title'], :author=>t['artist'], :remote_file_url=>t['url']}}
+        tracks[0..3].each do |t|
+          Track.create(t) unless Track.where(:name => t[:name], :author => t[:author]).any?
+        end
       end
+    rescue VkApi::ServerError => e
+      raise e unless e.error['error_code'] == 201
+
     end
+
   end
 
 end
