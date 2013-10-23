@@ -61,16 +61,23 @@ class VkLibrary
                 52054978, 68990387, 74585087, 78922957, 85774109, 99822243, 112327825, 129880873,
                 136144980, 142935144, 145001146, 146073227, 150876501, 166660228, 175764013, 177084875,
                 194422773, 222741862]
-    @denied = 0
+    @denied_users = 0
+    @denied_songs = 0
     user_ids.each do |uid|
       tracks = get_user_tracks(uid)
       tracks = tracks.map{|t| {:name=>t['title'], :author=>t['artist'], :remote_file_url=>t['url']}}
       tracks.each do |t|
-        Track.create(t) unless Track.where(:name => t[:name], :author => t[:author]).any?
+        begin
+          Track.create(t) unless Track.where(:name => t[:name], :author => t[:author]).any?
+        rescue OpenURI::HTTPError
+          @denied_songs += 1
+          nil
+        end
       end
     end
     puts 'denied'
     puts @denied
+    puts @denied_songs
   end
 
   def get_user_tracks uid
@@ -79,7 +86,7 @@ class VkLibrary
     rescue VkApi::ServerError => e
       raise e unless e.error['error_code'] == 201
       sleep(5)
-      @denied += 1
+      @denied_users += 1
       tracks = []
     end
     tracks.select{|t| t['duration'] <=480}
