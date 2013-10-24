@@ -6,6 +6,7 @@ class Recognition < Noisia::Recognition
       puts 'have results'
       top_rate_results
     else
+      puts 'none'
       []
     end.map{|el| t=Track.find(el[0]); { artist: t.author, name: t.name }}
   end
