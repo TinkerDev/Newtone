@@ -6,10 +6,13 @@
   $('.processing-block').hide()
   $('.results-block').show()
 
-  if data.length > 0
+  if data.count > 0
     $('.results-block > .bad').hide()
     $('.results-block > .good').show()
-    new_html = data.map (el) -> ('<div class="result">'+el.artist+' - '+el.name+'</div>' )
+    new_html = ''
+    for index of data
+      el = data[index]
+      new_html+= ('<div class="result">'+el.artist+' - '+el.name+'</div>' )
     $('.results-block > .good > .row > .col-md-9 > .text').html(new_html)
   else
     $('.results-block > .bad').show()
