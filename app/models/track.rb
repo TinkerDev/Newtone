@@ -23,4 +23,13 @@ class Track < ActiveRecord::Base
     self.seed
   end
 
+  def generate_fingerprint
+    self.fingerprint = Noisia::Fingerprint.new(file.path, :add, default_density).build
+  end
+
+  def force_store_elastic
+    generate_fingerprint
+    Noisia::Elastic.store_track(self)
+  end
+
 end
