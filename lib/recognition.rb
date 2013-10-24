@@ -3,6 +3,7 @@ class Recognition < Noisia::Recognition
 
   def results
     if search_results.any?
+      puts 'have results'
       top_rate_results
     else
       []
@@ -13,6 +14,8 @@ class Recognition < Noisia::Recognition
 
   def top_rate_results
     if search_results.many?
+      puts search_results
+      puts rates
       filter_results_by_rate
     else
       search_results
